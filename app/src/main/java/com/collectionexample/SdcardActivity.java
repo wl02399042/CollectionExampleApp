@@ -2,6 +2,7 @@ package com.collectionexample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class SdcardActivity extends AppCompatActivity {
@@ -11,6 +12,8 @@ public class SdcardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         TextView text = new TextView(this);
         text.setText("Sdcard存取範例");
-        setContentView(text);
+        Button btn=new Button(this);
+        btn.setText("Btn");
+        setContentView(btn);
     }
 }
