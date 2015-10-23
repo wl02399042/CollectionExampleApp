@@ -3,11 +3,13 @@ package com.collectionexample;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
         container.addView(mediaPlayerSample);
         container.addView(recycleView);
         container.addView(volleyRequest);
+        NumberPicker picker = new NumberPicker(new ContextThemeWrapper(this, android.R.style.Theme_Holo_Light));
+        picker.setMaxValue(10);
+        container.addView(picker);
 
         setContentView(container);
     }

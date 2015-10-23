@@ -5,4 +5,5 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="CustomNPStyle" parent="@android:style/Theme.NoTitleBar.Fullscreen"></style>
 </resources>
