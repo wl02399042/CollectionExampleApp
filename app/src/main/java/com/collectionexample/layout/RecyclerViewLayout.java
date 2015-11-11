@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.collectionexample.model.GenerateViewId;
 import com.collectionexample.model.WH;
 
 /**
@@ -19,54 +20,30 @@ import com.collectionexample.model.WH;
 public class RecyclerViewLayout extends RelativeLayout {
     public RecyclerView recyclerView;
     public RelativeLayout layout;
-    public NetworkImageView imageView;
-    private WH WH;
 
     public RecyclerViewLayout(Context context) {
         super(context);
-        init();
-    }
 
-    private void init() {
-        WH = new WH(getContext());
-        setRecyclerView();
+        recyclerView = recyclerView();
+        addView(recyclerView);
     }
 
     //建立 RecyclerView 的畫面
-    private void setRecyclerView() {
+    private RecyclerView recyclerView() {
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
 
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
-
         DefaultItemAnimator itemAnimator = new DefaultItemAnimator();
 
-        recyclerView = new RecyclerView(getContext());
-        recyclerView.setLayoutParams(params);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(itemAnimator);
-        this.addView(recyclerView);
-    }
+        RecyclerView v = new RecyclerView(getContext());
 
-    //建立 ItemView 的畫面
-    public RelativeLayout getItemView() {
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                WH.getW(50),
-                WH.getH(22));
-
-        RelativeLayout.LayoutParams imageParams = new RelativeLayout.LayoutParams(
-                WH.getW(45),
-                WH.getH(22));
-        imageParams.addRule(CENTER_IN_PARENT);
-
-        imageView = new NetworkImageView(getContext());
-        imageView.setLayoutParams(imageParams);
-
-        layout = new RelativeLayout(getContext());
-        layout.setLayoutParams(params);
-        layout.addView(imageView);
-        return layout;
+        v.setId(GenerateViewId.get());
+        v.setLayoutParams(params);
+        v.setLayoutManager(layoutManager);
+        v.setItemAnimator(itemAnimator);
+        return v;
     }
 
 }
